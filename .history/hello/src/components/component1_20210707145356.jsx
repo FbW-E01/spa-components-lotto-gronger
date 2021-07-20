@@ -1,0 +1,59 @@
+import React, { Component, createElement } from 'react'
+
+function getRandomNumber(min,max){
+    min =Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random()*(min - max+1) + min)
+}
+
+
+export default class Component1 extends Component {
+    constructor() {
+        super();
+        this.state = {
+            numbers:[]
+        };
+    }
+
+    getLuckyNumber(){
+        let numsCount = 6
+        const result = []
+
+        while (numsCount) {
+            let newNumber =getRandomNumber(1,49) 
+            
+        while (result.indexOf(newNumber) !== -1) {
+             newNumber =getRandomNumber(1,49) 
+        }
+
+        result.push(newNumber)
+        numsCount--;
+
+        }
+        this.setState({numbers:result})
+    }
+  
+    render() {
+        return (
+            <div>
+               <h1>Add Number</h1>
+                <h3>{this.state.num}</h3>
+                <div>
+                    {this.state.numbers.map(result => {
+                        return (
+                            <span>{result}</span>
+                        )
+                    })}
+                </div>
+                <button onClick={this.createRandomNumbers}>
+                    generate num
+
+                </button>
+            </div>
+        )
+    }
+}
+
+
+
+//used rcc for this
